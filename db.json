@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "task": "Ma premi�re t�che",
+      "isDone": false
+    },
+    {
+      "id": 2,
+      "task": "test curl",
+      "isDone": false
+    },
+    {
+      "task": "Encore un test",
+      "isDone": true,
+      "id": 3
+    }
+  ]
+}
