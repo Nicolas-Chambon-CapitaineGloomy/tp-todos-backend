@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Todo } from "../todo";
+import { TodoService } from '../todo-service.service';
 
 @Component({
   selector: "app-todo-list",
@@ -9,17 +10,21 @@ import { Todo } from "../todo";
 export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
 
+
   newTodo: string;
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
     this.refreshTodos();
   }
 
+  //Pour le tp je doit remplacer le getitem du localstorage par un get a l'api du coté service que j'appelle ici
+  //c'est clair ? ET BAH POUR MOI NON PLUS WESH
   private refreshTodos() {
-    const todos = localStorage.getItem('todos')
-    this.todos = todos ? JSON.parse(todos) : []
+    this.todoService.getUsers().subscribe(
+      (todos: Todo[]) => this.todos = todos
+      )
   }
 
   saveTodos() {
@@ -27,16 +32,30 @@ export class TodoListComponent implements OnInit {
   }
 
   addTodo() {
-    this.todos.push({
-      id: this.todos.reduce((acc, t) => acc <= t.id ? t.id + 1 : acc, 1),
+
+    const newTodo: Todo = {
       task: this.newTodo,
       isDone: false
+    }
+
+    this.todoService.addTodo(newTodo).subscribe((todo : Todo) => {
+      this.todos.push(todo)
     })
-    this.saveTodos()
   }
 
   deleteTodo(todo: Todo) {
-    this.todos = this.todos.filter(t => t.id !== todo.id)
-    this.saveTodos()
+
+    this.todoService.removeTodo(todo).subscribe(
+      () => {
+        this.todos = this.todos.filter(t=> t.id !== todo.id)
+      }
+    )
   }
+
+  updateTodo(todo: Todo) {
+
+    this.todoService.updateTodo(todo).subscribe()
+  }
+
+
 }

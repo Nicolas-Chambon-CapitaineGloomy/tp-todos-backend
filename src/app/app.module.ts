@@ -6,6 +6,7 @@ import { TodoComponent } from './todo/todo.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { FormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
   imports: [
     BrowserModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

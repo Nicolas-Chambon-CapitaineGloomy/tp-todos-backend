@@ -8,12 +8,7 @@
     {
       "id": 2,
       "task": "test curl",
-      "isDone": false
-    },
-    {
-      "task": "Encore un test",
-      "isDone": true,
-      "id": 3
+      "isDone": true
     }
   ]
 }

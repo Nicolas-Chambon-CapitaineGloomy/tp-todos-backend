@@ -1,5 +1,6 @@
 export interface Todo {
-    id: number
+    //id? la pour dire qu'il n'est pas obligatoire
+    id?: number
     task: string
     isDone: boolean
 }

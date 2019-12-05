@@ -1,6 +1,6 @@
 <app-todo
   *ngFor="let todo of todos"
-  (update)="saveTodos()"
+  (update)="updateTodo(todo)"
   (delete)="deleteTodo(todo)"
   [todo]="todo"
 ></app-todo>
