@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter, Input } from "@angular/core";
 import { Todo } from "../todo";
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { TodoService } from '../todo-service.service';
 
 const ANIMATION_TIME = 300
 @Component({
@@ -16,6 +17,9 @@ const ANIMATION_TIME = 300
   ]
 })
 export class TodoComponent {
+
+  constructor(private todoService: TodoService) { }
+
   @Output()
   update = new EventEmitter<Todo>();
 
